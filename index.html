@@ -119,7 +119,7 @@
       <p id="modalNama"></p>
       <p id="modalNo"></p>
       <p id="modalKelas"></p>
-      <h1 style="color: green;"><strong>LULUS</strong></h1>
+      <h1 style="color: green; font-size: 60px; font-weight: bold;">"><strong>LULUS</strong></h1>
       <button class="close-btn" onclick="tutupModal()">Tutup</button>
     </div>
   </div>
@@ -196,9 +196,9 @@
         const nama = dataSiswa[noPeserta];
         const kelas = parseInt(noPeserta.slice(-4)) <= 22 ? "6A" : "6B";
 
-        document.getElementById("modalNama").innerText = `Nama: ${nama}`;
+        document.getElementById("modalNama").innerText = `${nama}`;
         document.getElementById("modalNo").innerText = `No. Peserta: ${noPeserta}`;
-        document.getElementById("modalKelas").innerText = `Kelas: ${kelas}`;
+        document.getElementById("modalKelas").innerText = `Kelas ${kelas}`;
 
         document.getElementById("modalKelulusan").style.display = "flex";
         resultDiv.innerHTML = "";
