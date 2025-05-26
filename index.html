@@ -18,42 +18,43 @@
     }
     .card {
       background: #fff;
-      padding: 30px 20px;
+      padding: 40px 30px;
       border-radius: 12px;
       box-shadow: 0 10px 25px rgba(0,0,0,0.1);
       text-align: center;
-      width: 320px;
+      width: 400px;
       animation: fadeIn 1s ease-in-out;
     }
     .card img {
-      width: 70px;
-      margin-bottom: 15px;
+      width: 100px;
+      margin-bottom: 20px;
     }
     .card h1 {
-      font-size: 20px;
+      font-size: 24px;
       margin: 10px 0 5px;
     }
     .card h2 {
-      font-size: 16px;
+      font-size: 20px;
       color: #666;
       margin-bottom: 20px;
     }
     .card input {
       width: 100%;
-      padding: 10px;
+      padding: 12px;
       margin-bottom: 15px;
       border: 1px solid #ccc;
       border-radius: 6px;
-      font-size: 14px;
+      font-size: 16px;
+      text-align: center;
     }
     .card button {
       width: 100%;
-      padding: 10px;
+      padding: 12px;
       background: #4CAF50;
       color: white;
       border: none;
       border-radius: 6px;
-      font-size: 14px;
+      font-size: 16px;
       cursor: pointer;
     }
     .card button:hover {
@@ -61,12 +62,17 @@
     }
     .result {
       margin-top: 20px;
-      font-size: 16px;
+      font-size: 18px;
       font-weight: bold;
+      animation: slideIn 0.5s ease-in-out;
     }
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateX(-100px); }
+      to { opacity: 1; transform: translateX(0); }
     }
   </style>
 </head>
@@ -74,7 +80,7 @@
   <div class="card">
     <img src="lg_Sekolah.png" alt="Logo Sekolah" />
     <h1>PENGUMUMAN KELULUSAN</h1>
-    <h2>Tahun Ajaran 2023/2024</h2>
+    <h2>UPT SDN 200 GRESSIK</h2>
     <input type="text" id="noPeserta" placeholder="Masukkan No. Peserta" />
     <button onclick="checkKelulusan()">Periksa Kelulusan</button>
     <div class="result" id="result"></div>
