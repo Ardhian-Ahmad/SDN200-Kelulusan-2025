@@ -58,8 +58,9 @@
       font-size: 16px;
       cursor: pointer;
     }
-    .card button:hover {
-      background: #45a049;
+    .card button:disabled {
+      background: #aaa;
+      cursor: not-allowed;
     }
     .result {
       margin-top: 20px;
@@ -84,7 +85,7 @@
     <h2>UPT SDN 200 GRESIK</h2>
     <h2>Tahun Pelajaran 2024-2025</h2>
     <input type="text" id="noPeserta" placeholder="Masukkan No. Peserta" />
-    <button onclick="checkKelulusan()">Periksa Kelulusan</button>
+    <button id="cekBtn" onclick="checkKelulusan()">Periksa Kelulusan</button>
     <div class="result" id="result"></div>
   </div>
 
@@ -142,14 +143,30 @@
     };
 
     function checkKelulusan() {
-      const noPeserta = document.getElementById("noPeserta").value.trim();
+      const input = document.getElementById("noPeserta");
       const resultDiv = document.getElementById("result");
+      const noPeserta = input.value.trim();
+      input.value = ""; // Kosongkan input setelah klik
+
       if (dataSiswa[noPeserta]) {
         resultDiv.innerHTML = `<span style="color: green;">${dataSiswa[noPeserta]} - <strong>LULUS</strong></span>`;
       } else {
         resultDiv.innerHTML = `<span style="color: red;">No. Peserta tidak ditemukan</span>`;
       }
     }
+
+    // Aktifkan tombol hanya jika sudah tanggal 2 Juli 2025 pukul 00:00
+    window.onload = function () {
+      const cekBtn = document.getElementById("cekBtn");
+      const now = new Date();
+      const buka = new Date("2025-07-02T00:00:00");
+
+      if (now < buka) {
+        cekBtn.disabled = true;
+        document.getElementById("result").innerHTML = "<span style='color: orange;'>Pengumuman akan tersedia pada 2 Juli 2025 pukul 00.00</span>";
+      }
+    };
   </script>
 </body>
 </html>
+``
