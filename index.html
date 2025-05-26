@@ -116,10 +116,10 @@
   <div class="modal" id="modalKelulusan">
     <div class="modal-content">
       <h1>S E L A M A T</h1>
-      <p style="font-wight: bold;" id="modalNama"></p>
-      <p style="font-wight: bold;" id="modalNo"></p>
+      <p style="font-wight: bold; font-size: 40px" id="modalNama"></p>
+      <p style="font-wight: bold;" id="modalNo"  id="Nonom";></p>
       <p id="modalKelas"></p>
-      <p style="font-size: 30px">Dinyatakan</p>
+      <p style="font-size: 20px">Dinyatakan</p>
       <h1 style="color: green; font-size: 60px; font-weight: bold;"><strong>LULUS</strong></h1>
       <button class="close-btn" onclick="tutupModal()">Tutup</button>
     </div>
@@ -198,7 +198,8 @@
         const kelas = parseInt(noPeserta.slice(-4)) <= 22 ? "6A" : "6B";
 
         document.getElementById("modalNama").innerText = `${nama}`;
-        document.getElementById("modalNo").innerText = `No. Peserta ${noPeserta}`;
+        document.getElementById("modalNo").innerText = `No. Peserta `;
+        document.getElementById("Nonom").innerText = `${noPeserta}`;
         document.getElementById("modalKelas").innerText = `Kelas ${kelas}`;
 
         document.getElementById("modalKelulusan").style.display = "flex";
