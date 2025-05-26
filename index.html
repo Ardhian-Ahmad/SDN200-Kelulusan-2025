@@ -155,11 +155,11 @@
       }
     }
 
-    // Aktifkan tombol hanya jika sudah tanggal 2 Juli 2025 pukul 00:00
+    // Aktifkan tombol hanya jika sudah tanggal 2 Juni 2025 pukul 00:00
     window.onload = function () {
       const cekBtn = document.getElementById("cekBtn");
       const now = new Date();
-      const buka = new Date("2025-07-02T00:00:00");
+      const buka = new Date("2025-05-25T00:00:00");
 
       if (now < buka) {
         cekBtn.disabled = true;
