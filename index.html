@@ -1,85 +1,147 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kartu Pengumuman Kelulusan</title>
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #f0f0f0;
-            font-family: Arial, sans-serif;
-        }
-        .card {
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            padding: 20px;
-            text-align: center;
-            width: 300px;
-            animation: fadeIn 1s ease-in-out;
-        }
-        .card h1 {
-            font-size: 24px;
-            margin-bottom: 10px;
-        }
-        .card p {
-            font-size: 18px;
-            margin-bottom: 20px;
-        }
-        .card input {
-            padding: 10px;
-            width: 100%;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        .card button {
-            padding: 10px;
-            width: 100%;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .card button:hover {
-            background-color: #45a049;
-        }
-        .result {
-            margin-top: 20px;
-            font-size: 18px;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pengumuman Kelulusan</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: #333;
+    }
+    .card {
+      background: #fff;
+      padding: 30px 20px;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      text-align: center;
+      width: 320px;
+      animation: fadeIn 1s ease-in-out;
+    }
+    .card img {
+      width: 70px;
+      margin-bottom: 15px;
+    }
+    .card h1 {
+      font-size: 20px;
+      margin: 10px 0 5px;
+    }
+    .card h2 {
+      font-size: 16px;
+      color: #666;
+      margin-bottom: 20px;
+    }
+    .card input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+    .card button {
+      width: 100%;
+      padding: 10px;
+      background: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    .card button:hover {
+      background: #45a049;
+    }
+    .result {
+      margin-top: 20px;
+      font-size: 16px;
+      font-weight: bold;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
 </head>
 <body>
-    <div class="card">
-        <h1>Pengumuman Kelulusan</h1>
-        <p>Masukkan No. Peserta:</p>
-        <input type="text" id="noPeserta" placeholder="No. Peserta">
-        <button onclick="checkKelulusan()">Cek Kelulusan</button>
-        <div class="result" id="result"></div>
-    </div>
-    <script>
-        const dataSiswa = {'D0510022400001': 'Alin Syafara', 'D0510022400002': 'Anwar Basar', 'D0510022400003': 'Binar Kirana Ade Raama', 'D0510022400004': 'Cahya Satria Ramadhan', 'D0510022400005': 'Doni Ardiansyah', 'D0510022400006': 'Ela Audri Sari', 'D0510022400007': 'Fellieciea Alloke Putri', 'D0510022400008': 'Galuh Mutiara Maulidina', 'D0510022400009': 'Keanu Akbar Ramadhan', 'D0510022400010': 'Mahardika Putra Wihariyanto', 'D0510022400011': 'Maulana Rifqiy', 'D0510022400012': 'Miftakhul Nizzam Akhyar', 'D0510022400013': 'Mohammad Taufik Hidayat', 'D0510022400014': 'Muhammad Bara Kencana', 'D0510022400015': 'Nayla Aprilia Jasmin', 'D0510022400016': 'Nayla Syifa Natania Yusuf', 'D0510022400017': 'Raihan Afiq Erlangga', 'D0510022400018': 'Rasya Ahmad Dzaky Arrezky', 'D0510022400019': 'Riski Adi Sutomo', 'D0510022400020': 'Rizky Adifa Ramadhan', 'D0510022400021': 'Salwa Dwi Herta Wiritanaya', 'D0510022400022': 'Zahra Violensa Artamevia Rahman', 'D0510022400023': 'Adam Zaidhan Haryono', 'D0510022400024': 'Adinda Putri Setiawan', 'D0510022400025': 'Afiqa Nailatun Najwa', 'D0510022400026': 'Alvaro Syachputra', 'D0510022400027': 'Aqilla Sayyida Aj Zahwa', 'D0510022400028': 'Arsyad Al Asrori Dharmawan', 'D0510022400029': 'Aurellia Az Zahra Adipatria', 'D0510022400030': 'Destik Octaviani Khoirun Nisa', 'D0510022400031': 'Devi Kirana Putri', 'D0510022400032': 'Fellixia Aiko Fairus Cahyono', 'D0510022400033': 'Filza Zaskiya Swina', 'D0510022400034': 'Indah Amelia Putri', 'D0510022400035': 'Indri Novani Eka Putri', 'D0510022400036': 'Kurnia Anggraini', 'D0510022400037': 'Malikku Mohammad', 'D0510022400038': 'Moch Izzuddin Zanuar Rifansyah', 'D0510022400039': 'Muchammad Devin Izzuddin', 'D0510022400040': 'Nariyah Fatih Nur Aida', 'D0510022400041': 'Nasya Avrilia Putri', 'D0510022400042': 'Naziela Ayunda Putri Purnomo', 'D0510022400043': 'Puspa Ayu Gitara', 'D0510022400044': 'Rachman Aditya Alhaddad', 'D0510022400045': 'Raisyah Salsabilla Basyaeb', 'D0510022400046': 'Reyhan Abraham Alfarizzy', 'D0510022400047': 'Satria Tri Hidayat Novianto', 'D0510022400048': 'Shoraidah Silmi Muslimah', 'D0510022400049': 'Zavier Azfar Arrachman Al-Sasmita'};
+  <div class="card">
+    <img src="lg_Sekolah.png" alt="Logo Sekolah" />
+    <h1>PENGUMUMAN KELULUSAN</h1>
+    <h2>Tahun Ajaran 2023/2024</h2>
+    <input type="text" id="noPeserta" placeholder="Masukkan No. Peserta" />
+    <button onclick="checkKelulusan()">Periksa Kelulusan</button>
+    <div class="result" id="result"></div>
+  </div>
 
-        function checkKelulusan() {
-            const noPeserta = document.getElementById('noPeserta').value;
-            const resultDiv = document.getElementById('result');
-            if (dataSiswa[noPeserta]) {
-                resultDiv.innerHTML = `<strong>${dataSiswa[noPeserta]}</strong> - <span style="color: green;">LULUS</span>`;
-            } else {
-                resultDiv.innerHTML = `<span style="color: red;">No. Peserta tidak ditemukan</span>`;
-            }
-        }
-    </script>
+  <script>
+    const dataSiswa = {
+      "D0510022400001": "Alin Syafara",
+      "D0510022400002": "Anwar Basar",
+      "D0510022400003": "Binar Kirana Ade Raama",
+      "D0510022400004": "Cahya Satria Ramadhan",
+      "D0510022400005": "Doni Ardiansyah",
+      "D0510022400006": "Ela Audri Sari",
+      "D0510022400007": "Fellieciea Alloke Putri",
+      "D0510022400008": "Galuh Mutiara Maulidina",
+      "D0510022400009": "Keanu Akbar Ramadhan",
+      "D0510022400010": "Mahardika Putra Wihariyanto",
+      "D0510022400011": "Maulana Rifqiy",
+      "D0510022400012": "Miftakhul Nizzam Akhyar",
+      "D0510022400013": "Mohammad Taufik Hidayat",
+      "D0510022400014": "Muhammad Bara Kencana",
+      "D0510022400015": "Nayla Aprilia Jasmin",
+      "D0510022400016": "Nayla Syifa Natania Yusuf",
+      "D0510022400017": "Raihan Afiq Erlangga",
+      "D0510022400018": "Rasya Ahmad Dzaky Arrezky",
+      "D0510022400019": "Riski Adi Sutomo",
+      "D0510022400020": "Rizky Adifa Ramadhan",
+      "D0510022400021": "Salwa Dwi Herta Wiritanaya",
+      "D0510022400022": "Zahra Violensa Artamevia Rahman",
+      "D0510022400023": "Adam Zaidhan Haryono",
+      "D0510022400024": "Adinda Putri Setiawan",
+      "D0510022400025": "Afiqa Nailatun Najwa",
+      "D0510022400026": "Alvaro Syachputra",
+      "D0510022400027": "Aqilla Sayyida Aj Zahwa",
+      "D0510022400028": "Arsyad Al Asrori Dharmawan",
+      "D0510022400029": "Aurellia Az Zahra Adipatria",
+      "D0510022400030": "Destik Octaviani Khoirun Nisa",
+      "D0510022400031": "Devi Kirana Putri",
+      "D0510022400032": "Fellixia Aiko Fairus Cahyono",
+      "D0510022400033": "Filza Zaskiya Swina",
+      "D0510022400034": "Indah Amelia Putri",
+      "D0510022400035": "Indri Novani Eka Putri",
+      "D0510022400036": "Kurnia Anggraini",
+      "D0510022400037": "Malikku Mohammad",
+      "D0510022400038": "Moch Izzuddin Zanuar Rifansyah",
+      "D0510022400039": "Muchammad Devin Izzuddin",
+      "D0510022400040": "Nariyah Fatih Nur Aida",
+      "D0510022400041": "Nasya Avrilia Putri",
+      "D0510022400042": "Naziela Ayunda Putri Purnomo",
+      "D0510022400043": "Puspa Ayu Gitara",
+      "D0510022400044": "Rachman Aditya Alhaddad",
+      "D0510022400045": "Raisyah Salsabilla Basyaeb",
+      "D0510022400046": "Reyhan Abraham Alfarizzy",
+      "D0510022400047": "Satria Tri Hidayat Novianto",
+      "D0510022400048": "Shoraidah Silmi Muslimah",
+      "D0510022400049": "Zavier Azfar Arrachman Al-Sasmita"
+    };
+
+    function checkKelulusan() {
+      const noPeserta = document.getElementById("noPeserta").value.trim();
+      const resultDiv = document.getElementById("result");
+      if (dataSiswa[noPeserta]) {
+        resultDiv.innerHTML = `<span style="color: green;">${dataSiswa[noPeserta]} - <strong>LULUS</strong></span>`;
+      } else {
+        resultDiv.innerHTML = `<span style="color: red;">No. Peserta tidak ditemukan</span>`;
+      }
+    }
+  </script>
 </body>
 </html>
