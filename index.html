@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Pengumuman Kelulusan Kelas 6</title>
   <style>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     body {
       font-family: Arial, sans-serif;
       background: linear-gradient(135deg, #6a11cb 0%, #5b3cc4 50%, #2575fc 100%);
@@ -200,18 +201,26 @@
       }
 
       if (dataSiswa[noPeserta]) {
-        const nama = dataSiswa[noPeserta];
-        const kelas = parseInt(noPeserta.slice(-4)) <= 22 ? "6A" : "6B";
+      const nama = dataSiswa[noPeserta];
+      const kelas = parseInt(noPeserta.slice(-4)) <= 22 ? "6A" : "6B";
 
-        document.getElementById("modalNama").innerText = `${nama}`;
-        document.getElementById("modalNo").innerText = `${noPeserta}`;
-        document.getElementById("modalKelas").innerText = `${kelas}`;
+      document.getElementById("modalNama").innerText = `${nama}`;
+      document.getElementById("modalNo").innerText = `${noPeserta}`;
+      document.getElementById("modalKelas").innerText = `${kelas}`;
 
-        document.getElementById("modalKelulusan").style.display = "flex";
-        resultDiv.innerHTML = "";
-      } else {
-        resultDiv.innerHTML = `<span style="color: red;">Nomor Peserta tidak ditemukan.</span>`;
-      }
+      document.getElementById("modalKelulusan").style.display = "flex";
+      resultDiv.innerHTML = "";
+
+      // Efek konfeti
+      confetti({
+        particleCount: 150,
+        spread: 100,
+        origin: { y: 0.6 }
+      });
+    } else {
+      resultDiv.innerHTML = `<span style="color: red;">Nomor Peserta tidak ditemukan.</span>`;
+    }
+
     }
 
     function tutupModal() {
