@@ -7,10 +7,12 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #6a11cb, #2575fc);
-      text-align: center;
-      margin: 0;
-      padding: 0;
+      background: linear-gradient(135deg, #6a11cb 0%, #5b3cc4 50%, #2575fc 100%);
+      background-repeat: no-repeat;
+      background-size: cover;
+      text-align: center;
+      margin: 0;
+      padding: 0;
     }
     .card {
       background: white;
@@ -130,7 +132,7 @@
       <button class="close-btn" onclick="tutupModal()">Tutup</button>
     </div>
   </div>
-
+  
   <script>
     const dataSiswa = {
       "D0510022400001": "Alin Syafara",
@@ -183,8 +185,8 @@
       "D0510022400048": "Shoraidah Silmi Muslimah",
       "D0510022400049": "Zavier Azfar Arrachman Al-Sasmita"
       // Tambahkan data lainnya sesuai kebutuhan
+      
     };
-
     function checkKelulusan() {
       const sekarang = new Date();
       const tanggalBuka = new Date("2025-05-02T07:00:00");
