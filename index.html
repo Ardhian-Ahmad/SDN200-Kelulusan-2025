@@ -107,7 +107,7 @@
     <h2>UPT SDN 200 GRESIK</h2>
     <h3>2024-2025</h3>
     <p>Masukkan Nomor Peserta Anda:</p>
-    <input type="text" id="noPeserta" placeholder="No. Peserta">
+    <input type="text" id="noPeserta" placeholder="Nomor Peserta">
     <br>
     <button onclick="checkKelulusan()">Cek Kelulusan</button>
     <div id="result"></div>
@@ -210,7 +210,7 @@
         document.getElementById("modalKelulusan").style.display = "flex";
         resultDiv.innerHTML = "";
       } else {
-        resultDiv.innerHTML = `<span style="color: red;">No. Peserta tidak ditemukan.</span>`;
+        resultDiv.innerHTML = `<span style="color: red;">Nomor Peserta tidak ditemukan.</span>`;
       }
     }
 
