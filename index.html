@@ -118,10 +118,13 @@
       <h1 style="color: #FFCB00">&#10028; S E L A M A T &#10028;</h1>
       <p style="font-weight: bold; font-size: 40px" id="modalNama"></p>
       <p>
-        <span id="modalNo"></span>
-        <span style="font-weight: bold;" id="Nonom"></span>
+        <span>No. Peserta</span>
+        <span style="font-weight: bold;" id="modalNo"></span>
       </p>
-      <p id="modalKelas"></p>
+      <p>
+        <span>Kelas</span>
+        <span style="font-weight: bold;" id="modalKelas"></span>
+      </p>
       <p style="font-size: 20px">Dinyatakan</p>
       <h1 style="color: green; font-size: 60px; font-weight: bold;"><strong>LULUS</strong></h1>
       <button class="close-btn" onclick="tutupModal()">Tutup</button>
@@ -184,7 +187,7 @@
 
     function checkKelulusan() {
       const sekarang = new Date();
-      const tanggalBuka = new Date("2025-06-02T07:00:00");
+      const tanggalBuka = new Date("2025-05-02T07:00:00");
       const input = document.getElementById("noPeserta");
       const noPeserta = input.value.trim();
       const resultDiv = document.getElementById("result");
@@ -201,9 +204,8 @@
         const kelas = parseInt(noPeserta.slice(-4)) <= 22 ? "6A" : "6B";
 
         document.getElementById("modalNama").innerText = `${nama}`;
-        document.getElementById("modalNo").innerText = `No. Peserta `;
-        document.getElementById("Nonom").innerText = `${noPeserta}`;
-        document.getElementById("modalKelas").innerText = `Kelas ${kelas}`;
+        document.getElementById("modalNo").innerText = `${noPeserta}`;
+        document.getElementById("modalKelas").innerText = `${kelas}`;
 
         document.getElementById("modalKelulusan").style.display = "flex";
         resultDiv.innerHTML = "";
