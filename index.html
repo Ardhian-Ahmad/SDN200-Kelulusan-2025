@@ -94,9 +94,14 @@
     @media screen and (max-width: 480px) {
       .card img {
         width: 100px;
-        display: block;
         margin: 0 auto 20px;
       }
+    }
+    #countdown {
+      font-size: 20px;
+      font-weight: bold;
+      color: red;
+      margin-bottom: 15px;
     }
   </style>
 </head>
@@ -106,6 +111,10 @@
     <h1>Pengumuman Kelulusan</h1>
     <h2>UPT SDN 200 GRESIK</h2>
     <h3>2024-2025</h3>
+
+    <!-- Timer Countdown -->
+    <div id="countdown"></div>
+
     <p>Masukkan Nomor Peserta Anda:</p>
     <input type="text" id="noPeserta" placeholder="Nomor Peserta">
     <br>
@@ -118,8 +127,8 @@
       <h1 style="color: #FFCB00">&#10028; S E L A M A T &#10028;</h1>
       <p style="font-weight: bold; font-size: 40px" id="modalNama"></p>
       <p>
-        <span>No. Peserta</span>
-        <span style="font-weight: bold;" id="modalNo"></span>
+        <span>No. Peserta</span>
+        <span style="font-weight: bold;" id="modalNo"></span>
       </p>
       <p>
         <span>Kelas</span>
@@ -130,7 +139,7 @@
       <button class="close-btn" onclick="tutupModal()">Tutup</button>
     </div>
   </div>
-  
+
   <script>
     const dataSiswa = {
       "D0510022400001": "Alin Syafara",
@@ -182,9 +191,9 @@
       "D0510022400047": "Satria Tri Hidayat Novianto",
       "D0510022400048": "Shoraidah Silmi Muslimah",
       "D0510022400049": "Zavier Azfar Arrachman Al-Sasmita"
-      // Tambahkan data lainnya sesuai kebutuhan
-      
+      // Lanjutkan daftar sesuai kebutuhan...
     };
+
     function checkKelulusan() {
       const sekarang = new Date();
       const tanggalBuka = new Date("2025-06-02T07:00:00");
@@ -203,9 +212,9 @@
         const nama = dataSiswa[noPeserta];
         const kelas = parseInt(noPeserta.slice(-4)) <= 22 ? "6A" : "6B";
 
-        document.getElementById("modalNama").innerText = `${nama}`;
-        document.getElementById("modalNo").innerText = `${noPeserta}`;
-        document.getElementById("modalKelas").innerText = `${kelas}`;
+        document.getElementById("modalNama").innerText = nama;
+        document.getElementById("modalNo").innerText = noPeserta;
+        document.getElementById("modalKelas").innerText = kelas;
 
         document.getElementById("modalKelulusan").style.display = "flex";
         resultDiv.innerHTML = "";
@@ -217,6 +226,28 @@
     function tutupModal() {
       document.getElementById("modalKelulusan").style.display = "none";
     }
+
+    // Timer Hitung Mundur
+    const countdownEl = document.getElementById("countdown");
+    const tanggalBuka = new Date("2025-06-02T07:00:00").getTime();
+
+    const interval = setInterval(function () {
+      const sekarang = new Date().getTime();
+      const selisih = tanggalBuka - sekarang;
+
+      if (selisih <= 0) {
+        clearInterval(interval);
+        countdownEl.style.display = "none";
+        return;
+      }
+
+      const hari = Math.floor(selisih / (1000 * 60 * 60 * 24));
+      const jam = Math.floor((selisih % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const menit = Math.floor((selisih % (1000 * 60 * 60)) / (1000 * 60));
+      const detik = Math.floor((selisih % (1000 * 60)) / 1000);
+
+      countdownEl.innerHTML = `Pengumuman akan tersedia dalam: ${hari}h ${jam}j ${menit}m ${detik}d`;
+    }, 1000);
   </script>
 </body>
 </html>
